@@ -19,49 +19,49 @@ show_preview_links: true
 collections:
   - name: "portfolio_data"
     label: "Portfolio Data"
-    files:
-      - name: "data"
-        label: "Site Data (data.json)"
-        file: "data.json"
-        format: "json"
-        editor:
-          preview: true
-        fields:
-          - { name: "meta", label: "Meta", widget: "object" }
-          - { name: "siteSettings", label: "Site Settings", widget: "object" }
-          - { name: "navigation", label: "Navigation", widget: "object" }
-          - { name: "hero", label: "Hero", widget: "object" }
-          - { name: "about", label: "About", widget: "object" }
-          - { name: "skills", label: "Skills", widget: "object" }
-          - { name: "experience", label: "Experience", widget: "object" }
-          - { name: "education", label: "Education", widget: "object" }
-          - { name: "projects", label: "Projects", widget: "object" }
-          - { name: "testimonials", label: "Testimonials", widget: "object" }
-          - { name: "contact", label: "Contact", widget: "object" }
-          - { name: "analytics", label: "Analytics", widget: "object", required: false }
-          - { name: "footer", label: "Footer", widget: "object" }
+    backend:
+      name: github
+      repo: dilshanprasanna/Portfolio
+      branch: main
+      squash_merges: true
 
-# Optional media library (uncomment and configure if you want to use uploadcare or similar)
-# media_library:
-#   name: uploadcare
-#   config:
-#     multiple: true
-          - name: "siteSettings"
-            label: "Global Settings"
-            widget: "object"
+    local_backend: true
+
+    site_url: https://dilshanprasanna.github.io/Portfolio/
+    logo_url: /brand/logo.svg
+    media_folder: "public/images"
+    public_folder: "/images"
+    publish_mode: editorial_workflow
+    locale: en
+    show_preview_links: true
+
+    media_library:
+      name: uploadcare
+      config:
+        multiple: true
+
+    collections:
+      - name: "portfolio_data"
+        label: "Portfolio Data"
+        files:
+          - name: "data"
+            label: "Site Data (data.json)"
+            file: "data.json"
+            format: "json"
+            editor:
+              preview: true
             fields:
-              - name: "personalInfo"
-                label: "Personal Information"
-                widget: "object"
-                fields:
-                  - { name: "fullName", label: "Full Name", widget: "string" }
-                  - { name: "professionalTitle", label: "Professional Title", widget: "string" }
-                  - { name: "profilePicture", label: "Profile Picture", widget: "image" }
-                  - { name: "coverImage", label: "Cover Image", widget: "image" }
-                  - { name: "shortBio", label: "Short Bio", widget: "text" }
-                  - { name: "detailedBiography", label: "Detailed Biography", widget: "markdown" }
-                  - { name: "location", label: "Location", widget: "string" }
-                  - { name: "timezone", label: "Timezone", widget: "string" }
+              - { name: "siteSettings", label: "Site Settings", widget: "object" }
+              - { name: "navigation", label: "Navigation", widget: "object" }
+              - { name: "hero", label: "Hero", widget: "object" }
+              - { name: "about", label: "About", widget: "object" }
+              - { name: "skills", label: "Skills", widget: "object" }
+              - { name: "experience", label: "Experience", widget: "object" }
+              - { name: "education", label: "Education", widget: "object" }
+              - { name: "projects", label: "Projects", widget: "object" }
+              - { name: "testimonials", label: "Testimonials", widget: "object" }
+              - { name: "contact", label: "Contact", widget: "object" }
+              - { name: "footer", label: "Footer", widget: "object" }
                   - { name: "currentStatus", label: "Current Status", widget: "string" }
                   - { name: "availabilityStatus", label: "Availability Status", widget: "string" }
                   - { name: "freelanceAvailability", label: "Freelance Availability", widget: "boolean" }
