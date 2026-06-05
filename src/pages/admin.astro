@@ -1,6 +1,7 @@
 ---
 const basePath = Astro.base ?? '/';
 const adminBase = `${basePath.replace(/\/$/, '')}/admin/`;
+const configPath = `${adminBase}config.yml`;
 ---
 <!doctype html>
 <html lang="en">
@@ -15,7 +16,7 @@ const adminBase = `${basePath.replace(/\/$/, '')}/admin/`;
     <script is:inline>
       window.CMS_MANUAL_INIT = true;
       window.addEventListener('DOMContentLoaded', () => {
-        window.CMS.init();
+        window.CMS.init({ config: ${JSON.stringify(configPath)} });
       });
     </script>
   </body>
