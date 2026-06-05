@@ -1,0 +1,6 @@
+---
+import TestimonialsInteractive from './TestimonialsInteractive';
+
+const { testimonials } = Astro.props;
+---
+<TestimonialsInteractive client:idle items={testimonials.items} ratings={testimonials.ratings} />

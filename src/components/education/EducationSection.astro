@@ -1,0 +1,49 @@
+---
+const { education } = Astro.props;
+
+const visibleItems = [...education.items]
+  .filter((item) => item.visible)
+  .sort((a, b) => {
+    const left = Number(a.startYear || 0);
+    const right = Number(b.startYear || 0);
+    return left - right;
+  });
+---
+<section id="education" class="content-section timeline-section">
+  <div class="section-heading">
+    <p class="eyebrow">Education</p>
+    <h2>Academic Background</h2>
+    <p>Chronological education timeline with featured entries and course tags.</p>
+  </div>
+
+  <div class="timeline-list">
+    {visibleItems.map((item) => (
+      <article class={`timeline-card ${item.featured ? 'is-featured' : ''}`}>
+        <div class="timeline-marker" aria-hidden="true" />
+        <div class="timeline-main">
+          <div class="timeline-header">
+            <div class="timeline-title-block">
+              <p class="timeline-meta">{item.startYear} - {item.endYear}</p>
+              <h3>{item.degreeName}</h3>
+              <p class="timeline-company">{item.instituteName}</p>
+            </div>
+            {item.featured ? <span class="featured-pill">Featured</span> : null}
+          </div>
+
+          <div class="timeline-branding">
+            <img src={item.instituteLogo} alt={`${item.instituteName} logo`} loading="lazy" decoding="async" />
+          </div>
+
+          <p class="timeline-description">{item.description}</p>
+          <p class="timeline-description">GPA: {item.gpa}</p>
+
+          <div class="timeline-tags">
+            {item.relevantCourses.map((course) => (
+              <span>{course}</span>
+            ))}
+          </div>
+        </div>
+      </article>
+    ))}
+  </div>
+</section>

@@ -1,0 +1,42 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import data from '../../data.json';
+import HeroSection from '../components/hero/HeroSection.astro';
+import AboutSection from '../components/about/AboutSection.astro';
+import SkillsSection from '../components/skills/SkillsSection.astro';
+import ExperienceSection from '../components/experience/ExperienceSection.astro';
+import EducationSection from '../components/education/EducationSection.astro';
+import ProjectsSection from '../components/projects/ProjectsSection.astro';
+import TestimonialsSection from '../components/testimonials/TestimonialsSection.astro';
+import ContactSection from '../components/contact/ContactSection.astro';
+import { prefixBasePaths } from '../lib/prefixBasePaths';
+
+const sectionItems = data.navigation.items.filter((item) => item.visible).sort((a, b) => a.order - b.order);
+const siteData = prefixBasePaths(data, Astro.base);
+---
+<BaseLayout title="Portfolio Starter" description="Astro-based portfolio starter for GitHub Pages" siteData={siteData}>
+  <main class="shell">
+    <HeroSection hero={siteData.hero} />
+    <AboutSection about={siteData.about} />
+    <SkillsSection skills={siteData.skills} />
+    <ExperienceSection experience={siteData.experience} />
+    <EducationSection education={siteData.education} />
+    <ProjectsSection projects={siteData.projects} />
+    <TestimonialsSection testimonials={siteData.testimonials} />
+    <ContactSection contact={siteData.contact} />
+
+    {sectionItems
+      .filter((item) => !['hero', 'about', 'skills', 'experience', 'education', 'projects', 'testimonials', 'contact'].includes(item.sectionKey))
+      .map((item) => (
+        <section id={item.sectionKey} class="content-section">
+          <p class="eyebrow">{item.label}</p>
+          <h2>{item.label}</h2>
+          <p>
+            Placeholder section for {item.label}. This anchor exists so the navigation system,
+            smooth scrolling, and active section highlighting can function immediately while the
+            full content renderer is built on top of the JSON model.
+          </p>
+        </section>
+      ))}
+  </main>
+</BaseLayout>

@@ -1,0 +1,400 @@
+--- PAGE 1 ---\nComplete AI Prompt for a Fully Customizable Portfolio 
+Website 
+Create a modern, professional, high-performance personal portfolio website that can be hosted 
+on GitHub Pages. The entire website must be fully customizable through an Admin Dashboard 
+or CMS-style configuration system without modifying any source code. 
+Main Goal 
+The portfolio owner should be able to update every section of the website at any time through 
+a visual interface or configuration panel. 
+No coding knowledge should be required to update content. 
+The website should be designed for software developers, university students, freelancers, 
+designers, and IT professionals. 
+ 
+Technical Requirements 
+Hosting 
+• Compatible with GitHub Pages 
+• Static site generation preferred 
+• SEO optimized 
+• Fast loading speed 
+• Mobile responsive 
+• Progressive Web App (PWA) support 
+• Dark and Light mode 
+• Accessibility compliant 
+Data Management 
+All content should be editable through: 
+• Admin Dashboard OR 
+• JSON Configuration Files OR 
+• Git-based CMS 
+No source code editing should be required. \n\n--- PAGE 2 ---\nAll updates should instantly reflect on the website after publishing. 
+ 
+Global Website Settings 
+Create a settings panel containing: 
+Personal Information 
+• Full Name 
+• Professional Title 
+• Profile Picture 
+• Cover Image 
+• Short Bio 
+• Detailed Biography 
+• Location 
+• Timezone 
+• Current Status 
+• Availability Status 
+• Freelance Availability Toggle 
+SEO Settings 
+• Website Title 
+• Meta Description 
+• Keywords 
+• Open Graph Image 
+• Twitter Card Image 
+• Google Analytics ID 
+Theme Settings 
+• Primary Color 
+• Secondary Color 
+• Accent Color 
+• Font Family 
+• Border Radius 
+• Animation Speed 
+• Dark Mode Colors 
+• Light Mode Colors \n\n--- PAGE 3 ---\nBranding 
+• Logo Upload 
+• Favicon Upload 
+• Footer Copyright Text 
+ 
+Hero Section 
+Fully editable: 
+Content 
+• Headline 
+• Sub-headline 
+• Introduction Text 
+• Typing Animation Text List 
+• Hero Background Image 
+• Hero Background Video 
+• Profile Image 
+Buttons 
+Add/Edit/Delete buttons: 
+Examples: 
+• View Projects 
+• Download CV 
+• Contact Me 
+• LinkedIn 
+• GitHub 
+Features 
+• Typing animation 
+• Animated particles 
+• Smooth entrance animation 
+• Call-to-action buttons 
+• Responsive design 
+ \n\n--- PAGE 4 ---\nNavigation System 
+Editable menu items. 
+Default Sections 
+• Home 
+• About 
+• Skills 
+• Experience 
+• Education 
+• Certifications 
+• Projects 
+• Achievements 
+• Gallery 
+• Testimonials 
+• Blog 
+• Contact 
+Features 
+• Sticky navigation 
+• Floating side navigation 
+• Active section highlighting 
+• Smooth scrolling 
+• Mobile menu 
+ 
+About Section 
+Editable fields: 
+• About Title 
+• Short Summary 
+• Full Description 
+• Personal Story 
+• Career Goals 
+• Interests 
+• Hobbies 
+Upload: \n\n--- PAGE 5 ---\n• Images 
+• Videos 
+ 
+Skills Section 
+Add unlimited skill categories. 
+Example: 
+Programming Web Development Databases Tools Design 
+Each skill contains: 
+• Skill Name 
+• Skill Icon 
+• Skill Percentage 
+• Skill Level 
+• Category 
+Features: 
+• Skill filtering 
+• Animated progress bars 
+• Skill search 
+ 
+Work Experience Section 
+Complete CRUD functionality. 
+Experience Fields 
+• Position 
+• Company Name 
+• Company Logo 
+• Employment Type 
+• Start Date 
+• End Date 
+• Current Job Toggle 
+• Location 
+• Description 
+• Responsibilities \n\n--- PAGE 6 ---\n• Technologies Used 
+• Company Website 
+Features: 
+• Reorder experiences 
+• Drag and drop sorting 
+• Hide/Show entries 
+• Featured experience option 
+ 
+Education Section 
+Complete CRUD functionality. 
+Fields 
+• Degree Name 
+• Institute Name 
+• Institute Logo 
+• Start Year 
+• End Year 
+• GPA 
+• Description 
+• Relevant Courses 
+Features 
+• Reorder education 
+• Featured education 
+• Hide/Show entries 
+ 
+Certifications Section 
+Fields: 
+• Certification Name 
+• Issuing Organization 
+• Issue Date 
+• Expiry Date 
+• Credential ID \n\n--- PAGE 7 ---\n• Credential URL 
+• Certificate Image 
+Features 
+• Verification links 
+• Filtering 
+• Search 
+ 
+Achievements Section 
+Fields: 
+• Achievement Title 
+• Date 
+• Description 
+• Images 
+• Awarding Organization 
+Features 
+• Timeline view 
+• Grid view 
+ 
+Projects Section 
+Complete project management system. 
+Fields 
+• Project Name 
+• Project Slug 
+• Category 
+• Project Description 
+• Detailed Description 
+• Technologies Used 
+• GitHub URL 
+• Live Demo URL 
+• Documentation URL 
+• Project Status \n\n--- PAGE 8 ---\nStatus Options: 
+• Completed 
+• In Progress 
+• Archived 
+Media 
+Upload: 
+• Thumbnail 
+• Banner Image 
+• Up to 10 Project Images 
+• Videos 
+Features 
+• Drag and drop sorting 
+• Featured projects 
+• Project categories 
+• Project search 
+• Project filtering 
+• Project tags 
+ 
+Project Case Studies 
+For selected projects. 
+Editable sections: 
+• Problem Statement 
+• Research 
+• Planning 
+• Wireframes 
+• Design Process 
+• Development Process 
+• Challenges 
+• Solutions 
+• Final Result 
+• Lessons Learned 
+Supports: \n\n--- PAGE 9 ---\n• Images 
+• Videos 
+• Diagrams 
+ 
+Gallery Section 
+Media manager. 
+Supports: 
+• Images 
+• Videos 
+Features: 
+• Albums 
+• Categories 
+• Lightbox Viewer 
+• Masonry Layout 
+ 
+Testimonials Section 
+Fields: 
+• Client Name 
+• Client Photo 
+• Company 
+• Position 
+• Testimonial 
+• Rating 
+Features: 
+• Carousel 
+• Grid Layout 
+ 
+Rating System 
+Allow visitors to rate portfolio. \n\n--- PAGE 10 ---\nFeatures: 
+• Star Rating 
+• Average Rating 
+• Rating Count 
+• Review Submission 
+Admin Controls: 
+• Approve Reviews 
+• Delete Reviews 
+• Hide Reviews 
+ 
+Resume / CV Section 
+Upload: 
+• PDF Resume 
+• DOCX Resume 
+Buttons: 
+• View Resume 
+• Download Resume 
+• Print Resume 
+Track: 
+• Downloads 
+• Views 
+ 
+Blog System 
+CRUD Management. 
+Fields: 
+• Title 
+• Slug 
+• Category 
+• Content 
+• Featured Image \n\n--- PAGE 11 ---\n• Tags 
+• Publish Date 
+Features: 
+• Search 
+• Categories 
+• Related Articles 
+ 
+Contact Section 
+Editable Contact Information. 
+Contact Methods 
+• Email 
+• Phone 
+• WhatsApp 
+• LinkedIn 
+• GitHub 
+• Facebook 
+• Instagram 
+• X/Twitter 
+• YouTube 
+Contact Form 
+Fields: 
+• Name 
+• Email 
+• Subject 
+• Message 
+Features: 
+• Form validation 
+• Success messages 
+• Spam protection 
+ \n\n--- PAGE 12 ---\nVisitor Analytics Dashboard 
+Track: 
+• Total Visitors 
+• Unique Visitors 
+• Daily Visitors 
+• Weekly Visitors 
+• Monthly Visitors 
+• Project Views 
+• CV Downloads 
+• Contact Form Submissions 
+Graphs: 
+• Visitor Trends 
+• Popular Pages 
+• Traffic Sources 
+ 
+Visitor Notifications 
+Notify owner when: 
+• New contact message received 
+• New visitor reaches site 
+• CV downloaded 
+• New review submitted 
+Notification Channels: 
+• Email 
+• Telegram 
+• Discord 
+• WhatsApp API 
+ 
+Last Updated System 
+Automatically display: 
+Last Updated Date Last Updated Time \n\n--- PAGE 13 ---\nUpdate whenever content changes. 
+ 
+Search System 
+Global search across: 
+• Projects 
+• Skills 
+• Experience 
+• Education 
+• Blog Posts 
+• Certifications 
+ 
+Footer Section 
+Editable: 
+• Copyright Text 
+• Social Links 
+• Quick Links 
+• Contact Information 
+ 
+Performance Optimization 
+• Lazy Loading 
+• Image Compression 
+• CDN Support 
+• Minified Assets 
+• Lighthouse Score 95+ 
+• Load Time Under 2 Seconds 
+ 
+Security 
+• Spam Protection 
+• Form Validation \n\n--- PAGE 14 ---\n• Rate Limiting 
+• Secure Configuration 
+ 
+Admin Dashboard 
+Create a complete dashboard allowing: 
+• Add Content 
+• Edit Content 
+• Delete Content 
+• Reorder Content 
+• Upload Media 
+• Manage Reviews 
+• Manage Analytics 
+• Change Theme 
+• Change SEO Settings 
+• Manage Navigation 
+Everything must be manageable without touching source code. 
+The final result should look premium, modern, highly interactive, recruiter-friendly, client-
+friendly, and suitable for GitHub Pages deployment. \n

@@ -1,0 +1,533 @@
+backend:
+  name: github
+  repo: YOUR_GITHUB_USERNAME/YOUR_GITHUB_REPOSITORY
+  branch: main
+  squash_merges: true
+
+local_backend: true
+
+site_url: /
+logo_url: /brand/logo.svg
+media_folder: "public/uploads"
+public_folder: "/uploads"
+publish_mode: editorial_workflow
+locale: en
+show_preview_links: true
+
+media_library:
+  name: uploadcare
+  config:
+    multiple: true
+
+collections:
+  - name: "site"
+    label: "Site Settings"
+    files:
+      - name: "data"
+        label: "Portfolio Content"
+        file: "data.json"
+        format: "json"
+        editor:
+          preview: true
+        fields:
+          - name: "meta"
+            label: "Meta"
+            widget: "object"
+            fields:
+              - { name: "schemaVersion", label: "Schema Version", widget: "string" }
+              - { name: "generatedAt", label: "Generated At", widget: "datetime" }
+              - { name: "lastUpdatedAt", label: "Last Updated At", widget: "datetime" }
+              - { name: "publishStatus", label: "Publish Status", widget: "select", options: ["draft", "published"] }
+              - { name: "locale", label: "Locale", widget: "string" }
+              - { name: "timezone", label: "Timezone", widget: "string" }
+              - { name: "supportsCrud", label: "Supports CRUD", widget: "boolean" }
+              - { name: "supportsReorder", label: "Supports Reorder", widget: "boolean" }
+              - { name: "supportsVisibilityToggle", label: "Supports Visibility Toggle", widget: "boolean" }
+              - { name: "supportsDraftPublish", label: "Supports Draft/Publish", widget: "boolean" }
+              - { name: "supportsSoftDelete", label: "Supports Soft Delete", widget: "boolean" }
+              - { name: "supportsMediaUploads", label: "Supports Media Uploads", widget: "boolean" }
+              - { name: "supportsUnlimitedArrays", label: "Supports Unlimited Arrays", widget: "boolean" }
+          - name: "siteSettings"
+            label: "Global Settings"
+            widget: "object"
+            fields:
+              - name: "personalInfo"
+                label: "Personal Information"
+                widget: "object"
+                fields:
+                  - { name: "fullName", label: "Full Name", widget: "string" }
+                  - { name: "professionalTitle", label: "Professional Title", widget: "string" }
+                  - { name: "profilePicture", label: "Profile Picture", widget: "image" }
+                  - { name: "coverImage", label: "Cover Image", widget: "image" }
+                  - { name: "shortBio", label: "Short Bio", widget: "text" }
+                  - { name: "detailedBiography", label: "Detailed Biography", widget: "markdown" }
+                  - { name: "location", label: "Location", widget: "string" }
+                  - { name: "timezone", label: "Timezone", widget: "string" }
+                  - { name: "currentStatus", label: "Current Status", widget: "string" }
+                  - { name: "availabilityStatus", label: "Availability Status", widget: "string" }
+                  - { name: "freelanceAvailability", label: "Freelance Availability", widget: "boolean" }
+              - name: "seo"
+                label: "SEO Settings"
+                widget: "object"
+                fields:
+                  - { name: "websiteTitle", label: "Website Title", widget: "string" }
+                  - { name: "metaDescription", label: "Meta Description", widget: "text" }
+                  - { name: "keywords", label: "Keywords", widget: "list", field: { name: "keyword", label: "Keyword", widget: "string" } }
+                  - { name: "openGraphImage", label: "Open Graph Image", widget: "image" }
+                  - { name: "twitterCardImage", label: "Twitter Card Image", widget: "image" }
+                  - { name: "googleAnalyticsId", label: "Google Analytics ID", widget: "string", required: false }
+              - name: "theme"
+                label: "Theme Settings"
+                widget: "object"
+                fields:
+                  - { name: "primaryColor", label: "Primary Color", widget: "color" }
+                  - { name: "secondaryColor", label: "Secondary Color", widget: "color" }
+                  - { name: "accentColor", label: "Accent Color", widget: "color" }
+                  - { name: "fontFamily", label: "Font Family", widget: "string" }
+                  - { name: "borderRadius", label: "Border Radius", widget: "string" }
+                  - { name: "animationSpeed", label: "Animation Speed", widget: "select", options: ["slow", "normal", "fast"] }
+                  - name: "darkModeColors"
+                    label: "Dark Mode Colors"
+                    widget: "object"
+                    fields:
+                      - { name: "background", label: "Background", widget: "color" }
+                      - { name: "surface", label: "Surface", widget: "color" }
+                      - { name: "text", label: "Text", widget: "color" }
+                      - { name: "muted", label: "Muted", widget: "color" }
+                  - name: "lightModeColors"
+                    label: "Light Mode Colors"
+                    widget: "object"
+                    fields:
+                      - { name: "background", label: "Background", widget: "color" }
+                      - { name: "surface", label: "Surface", widget: "color" }
+                      - { name: "text", label: "Text", widget: "color" }
+                      - { name: "muted", label: "Muted", widget: "color" }
+              - name: "branding"
+                label: "Branding"
+                widget: "object"
+                fields:
+                  - { name: "logo", label: "Logo", widget: "image" }
+                  - { name: "favicon", label: "Favicon", widget: "image" }
+                  - { name: "footerCopyrightText", label: "Footer Copyright Text", widget: "string" }
+          - name: "navigation"
+            label: "Navigation"
+            widget: "object"
+            fields:
+              - { name: "sticky", label: "Sticky Navigation", widget: "boolean" }
+              - { name: "floatingSideNavigation", label: "Floating Side Navigation", widget: "boolean" }
+              - { name: "activeSectionHighlighting", label: "Active Section Highlighting", widget: "boolean" }
+              - { name: "smoothScrolling", label: "Smooth Scrolling", widget: "boolean" }
+              - { name: "mobileMenu", label: "Mobile Menu", widget: "boolean" }
+              - name: "items"
+                label: "Menu Items"
+                widget: "list"
+                summary: "{{fields.label}}"
+                fields:
+                  - { name: "id", label: "ID", widget: "string" }
+                  - { name: "label", label: "Label", widget: "string" }
+                  - { name: "href", label: "Href", widget: "string" }
+                  - { name: "sectionKey", label: "Section Key", widget: "string" }
+                  - { name: "visible", label: "Visible", widget: "boolean" }
+                  - { name: "order", label: "Order", widget: "number" }
+                  - { name: "icon", label: "Icon", widget: "string", required: false }
+                  - { name: "type", label: "Type", widget: "string", required: false }
+          - name: "hero"
+            label: "Hero"
+            widget: "object"
+            fields:
+              - { name: "headline", label: "Headline", widget: "string" }
+              - { name: "subHeadline", label: "Sub-headline", widget: "string" }
+              - { name: "introductionText", label: "Introduction Text", widget: "text" }
+              - { name: "typingAnimationTextList", label: "Typing Animation Text List", widget: "list", field: { name: "item", label: "Item", widget: "string" } }
+              - { name: "backgroundImage", label: "Background Image", widget: "image", required: false }
+              - { name: "backgroundVideo", label: "Background Video", widget: "file", required: false }
+              - { name: "profileImage", label: "Profile Image", widget: "image" }
+              - name: "buttons"
+                label: "CTA Buttons"
+                widget: "list"
+                summary: "{{fields.label}}"
+                fields:
+                  - { name: "id", label: "ID", widget: "string" }
+                  - { name: "label", label: "Label", widget: "string" }
+                  - { name: "href", label: "Href", widget: "string" }
+                  - { name: "variant", label: "Variant", widget: "select", options: ["primary", "secondary", "ghost", "link"] }
+                  - { name: "visible", label: "Visible", widget: "boolean" }
+                  - { name: "order", label: "Order", widget: "number" }
+              - name: "features"
+                label: "Hero Features"
+                widget: "object"
+                fields:
+                  - { name: "typingAnimation", label: "Typing Animation", widget: "boolean" }
+                  - { name: "animatedParticles", label: "Animated Particles", widget: "boolean" }
+                  - { name: "smoothEntranceAnimation", label: "Smooth Entrance Animation", widget: "boolean" }
+                  - { name: "responsiveDesign", label: "Responsive Design", widget: "boolean" }
+          - name: "about"
+            label: "About"
+            widget: "object"
+            fields:
+              - { name: "aboutTitle", label: "About Title", widget: "string" }
+              - { name: "shortSummary", label: "Short Summary", widget: "text" }
+              - { name: "fullDescription", label: "Full Description", widget: "markdown" }
+              - { name: "personalStory", label: "Personal Story", widget: "markdown" }
+              - { name: "careerGoals", label: "Career Goals", widget: "text" }
+              - { name: "interests", label: "Interests", widget: "list", field: { name: "item", label: "Item", widget: "string" } }
+              - { name: "hobbies", label: "Hobbies", widget: "list", field: { name: "item", label: "Item", widget: "string" } }
+              - name: "media"
+                label: "Media"
+                widget: "list"
+                summary: "{{fields.type}}: {{fields.src}}"
+                fields:
+                  - { name: "id", label: "ID", widget: "string" }
+                  - { name: "type", label: "Type", widget: "select", options: ["image", "video"] }
+                  - { name: "src", label: "Source", widget: "file" }
+                  - { name: "alt", label: "Alt Text", widget: "string" }
+                  - { name: "order", label: "Order", widget: "number" }
+                  - { name: "visible", label: "Visible", widget: "boolean" }
+          - name: "skills"
+            label: "Skills"
+            widget: "object"
+            fields:
+              - name: "categories"
+                label: "Skill Categories"
+                widget: "list"
+                summary: "{{fields.name}}"
+                fields:
+                  - { name: "id", label: "ID", widget: "string" }
+                  - { name: "name", label: "Name", widget: "string" }
+                  - { name: "slug", label: "Slug", widget: "string" }
+                  - { name: "order", label: "Order", widget: "number" }
+                  - { name: "visible", label: "Visible", widget: "boolean" }
+                  - name: "items"
+                    label: "Skills"
+                    widget: "list"
+                    summary: "{{fields.skillName}}"
+                    fields:
+                      - { name: "id", label: "ID", widget: "string" }
+                      - { name: "skillName", label: "Skill Name", widget: "string" }
+                      - { name: "skillIcon", label: "Skill Icon", widget: "string" }
+                      - { name: "skillPercentage", label: "Skill Percentage", widget: "number" }
+                      - { name: "skillLevel", label: "Skill Level", widget: "string" }
+                      - { name: "category", label: "Category", widget: "string" }
+                      - { name: "order", label: "Order", widget: "number" }
+                      - { name: "visible", label: "Visible", widget: "boolean" }
+                      - { name: "tags", label: "Tags", widget: "list", field: { name: "tag", label: "Tag", widget: "string" } }
+          - name: "experience"
+            label: "Work Experience"
+            widget: "object"
+            fields:
+              - name: "items"
+                label: "Experiences"
+                widget: "list"
+                summary: "{{fields.position}} at {{fields.companyName}}"
+                fields:
+                  - { name: "id", label: "ID", widget: "string" }
+                  - { name: "position", label: "Position", widget: "string" }
+                  - { name: "companyName", label: "Company Name", widget: "string" }
+                  - { name: "companyLogo", label: "Company Logo", widget: "image", required: false }
+                  - { name: "employmentType", label: "Employment Type", widget: "string" }
+                  - { name: "startDate", label: "Start Date", widget: "string" }
+                  - { name: "endDate", label: "End Date", widget: "string" }
+                  - { name: "currentJobToggle", label: "Current Job", widget: "boolean" }
+                  - { name: "location", label: "Location", widget: "string" }
+                  - { name: "description", label: "Description", widget: "text" }
+                  - { name: "responsibilities", label: "Responsibilities", widget: "list", field: { name: "item", label: "Item", widget: "string" } }
+                  - { name: "technologiesUsed", label: "Technologies Used", widget: "list", field: { name: "item", label: "Item", widget: "string" } }
+                  - { name: "companyWebsite", label: "Company Website", widget: "string" }
+                  - { name: "order", label: "Order", widget: "number" }
+                  - { name: "visible", label: "Visible", widget: "boolean" }
+                  - { name: "featured", label: "Featured", widget: "boolean" }
+          - name: "education"
+            label: "Education"
+            widget: "object"
+            fields:
+              - name: "items"
+                label: "Education Entries"
+                widget: "list"
+                summary: "{{fields.degreeName}} at {{fields.instituteName}}"
+                fields:
+                  - { name: "id", label: "ID", widget: "string" }
+                  - { name: "degreeName", label: "Degree Name", widget: "string" }
+                  - { name: "instituteName", label: "Institute Name", widget: "string" }
+                  - { name: "instituteLogo", label: "Institute Logo", widget: "image", required: false }
+                  - { name: "startYear", label: "Start Year", widget: "string" }
+                  - { name: "endYear", label: "End Year", widget: "string" }
+                  - { name: "gpa", label: "GPA", widget: "string", required: false }
+                  - { name: "description", label: "Description", widget: "text" }
+                  - { name: "relevantCourses", label: "Relevant Courses", widget: "list", field: { name: "item", label: "Item", widget: "string" } }
+                  - { name: "order", label: "Order", widget: "number" }
+                  - { name: "visible", label: "Visible", widget: "boolean" }
+                  - { name: "featured", label: "Featured", widget: "boolean" }
+          - name: "projects"
+            label: "Projects"
+            widget: "object"
+            fields:
+              - name: "items"
+                label: "Projects"
+                widget: "list"
+                summary: "{{fields.projectName}}"
+                fields:
+                  - { name: "id", label: "ID", widget: "string" }
+                  - { name: "projectName", label: "Project Name", widget: "string" }
+                  - { name: "projectSlug", label: "Project Slug", widget: "string" }
+                  - { name: "category", label: "Category", widget: "string" }
+                  - { name: "projectDescription", label: "Project Description", widget: "text" }
+                  - { name: "detailedDescription", label: "Detailed Description", widget: "markdown" }
+                  - { name: "technologiesUsed", label: "Technologies Used", widget: "list", field: { name: "item", label: "Item", widget: "string" } }
+                  - { name: "githubUrl", label: "GitHub URL", widget: "string" }
+                  - { name: "liveDemoUrl", label: "Live Demo URL", widget: "string" }
+                  - { name: "documentationUrl", label: "Documentation URL", widget: "string" }
+                  - { name: "projectStatus", label: "Project Status", widget: "select", options: ["Completed", "In Progress", "Archived"] }
+                  - { name: "statusOptions", label: "Status Options", widget: "list", field: { name: "item", label: "Item", widget: "string" } }
+                  - { name: "thumbnail", label: "Thumbnail", widget: "image" }
+                  - { name: "bannerImage", label: "Banner Image", widget: "image" }
+                  - { name: "images", label: "Project Images", widget: "list", field: { name: "item", label: "Item", widget: "image" } }
+                  - { name: "videos", label: "Videos", widget: "list", field: { name: "item", label: "Item", widget: "file" } }
+                  - { name: "tags", label: "Tags", widget: "list", field: { name: "item", label: "Item", widget: "string" } }
+                  - { name: "featured", label: "Featured", widget: "boolean" }
+                  - { name: "visible", label: "Visible", widget: "boolean" }
+                  - { name: "order", label: "Order", widget: "number" }
+                  - name: "caseStudy"
+                    label: "Case Study"
+                    widget: "object"
+                    fields:
+                      - { name: "problemStatement", label: "Problem Statement", widget: "markdown" }
+                      - { name: "research", label: "Research", widget: "markdown" }
+                      - { name: "planning", label: "Planning", widget: "markdown" }
+                      - { name: "wireframes", label: "Wireframes", widget: "markdown" }
+                      - { name: "designProcess", label: "Design Process", widget: "markdown" }
+                      - { name: "developmentProcess", label: "Development Process", widget: "markdown" }
+                      - { name: "challenges", label: "Challenges", widget: "markdown" }
+                      - { name: "solutions", label: "Solutions", widget: "markdown" }
+                      - { name: "finalResult", label: "Final Result", widget: "markdown" }
+                      - { name: "lessonsLearned", label: "Lessons Learned", widget: "markdown" }
+                      - name: "media"
+                        label: "Case Study Media"
+                        widget: "list"
+                        summary: "{{fields.type}}"
+                        fields:
+                          - { name: "id", label: "ID", widget: "string" }
+                          - { name: "type", label: "Type", widget: "select", options: ["image", "video"] }
+                          - { name: "src", label: "Source", widget: "file" }
+                          - { name: "alt", label: "Alt Text", widget: "string" }
+                          - { name: "order", label: "Order", widget: "number" }
+                          - { name: "visible", label: "Visible", widget: "boolean" }
+          - name: "testimonials"
+            label: "Testimonials"
+            widget: "object"
+            fields:
+              - name: "items"
+                label: "Testimonials"
+                widget: "list"
+                summary: "{{fields.clientName}}"
+                fields:
+                  - { name: "id", label: "ID", widget: "string" }
+                  - { name: "clientName", label: "Client Name", widget: "string" }
+                  - { name: "clientPhoto", label: "Client Photo", widget: "image", required: false }
+                  - { name: "company", label: "Company", widget: "string", required: false }
+                  - { name: "position", label: "Position", widget: "string", required: false }
+                  - { name: "testimonial", label: "Testimonial", widget: "text" }
+                  - { name: "rating", label: "Rating", widget: "number" }
+                  - { name: "order", label: "Order", widget: "number" }
+                  - { name: "visible", label: "Visible", widget: "boolean" }
+                  - { name: "approved", label: "Approved", widget: "boolean" }
+              - name: "ratings"
+                label: "Rating System"
+                widget: "object"
+                fields:
+                  - { name: "allowVisitorRatings", label: "Allow Visitor Ratings", widget: "boolean" }
+                  - { name: "averageRating", label: "Average Rating", widget: "number" }
+                  - { name: "ratingCount", label: "Rating Count", widget: "number" }
+                  - { name: "reviewSubmission", label: "Review Submission", widget: "boolean" }
+                  - name: "adminControls"
+                    label: "Admin Controls"
+                    widget: "object"
+                    fields:
+                      - { name: "approveReviews", label: "Approve Reviews", widget: "boolean" }
+                      - { name: "deleteReviews", label: "Delete Reviews", widget: "boolean" }
+                      - { name: "hideReviews", label: "Hide Reviews", widget: "boolean" }
+          - name: "contact"
+            label: "Contact"
+            widget: "object"
+            fields:
+              - name: "methods"
+                label: "Contact Methods"
+                widget: "object"
+                fields:
+                  - { name: "email", label: "Email", widget: "string" }
+                  - { name: "phone", label: "Phone", widget: "string" }
+                  - { name: "whatsapp", label: "WhatsApp", widget: "string" }
+                  - { name: "linkedin", label: "LinkedIn", widget: "string" }
+                  - { name: "github", label: "GitHub", widget: "string" }
+                  - { name: "facebook", label: "Facebook", widget: "string" }
+                  - { name: "instagram", label: "Instagram", widget: "string" }
+                  - { name: "xTwitter", label: "X / Twitter", widget: "string" }
+                  - { name: "youtube", label: "YouTube", widget: "string" }
+              - name: "form"
+                label: "Contact Form"
+                widget: "object"
+                fields:
+                  - { name: "fields", label: "Fields", widget: "list", field: { name: "item", label: "Item", widget: "string" } }
+                  - name: "validation"
+                    label: "Validation"
+                    widget: "object"
+                    fields:
+                      - { name: "required", label: "Required Fields", widget: "list", field: { name: "item", label: "Item", widget: "string" } }
+                      - { name: "emailFormat", label: "Email Format", widget: "boolean" }
+                      - { name: "minMessageLength", label: "Minimum Message Length", widget: "number" }
+                  - { name: "successMessage", label: "Success Message", widget: "text" }
+                  - { name: "errorMessage", label: "Error Message", widget: "text" }
+                  - { name: "submissionState", label: "Submission State", widget: "select", options: ["enabled", "disabled"] }
+              - name: "spamProtection"
+                label: "Spam Protection"
+                widget: "object"
+                fields:
+                  - { name: "enabled", label: "Enabled", widget: "boolean" }
+                  - { name: "strategy", label: "Strategy", widget: "string" }
+          - name: "analytics"
+            label: "Analytics"
+            widget: "object"
+            fields:
+              - name: "totals"
+                label: "Totals"
+                widget: "object"
+                fields:
+                  - { name: "totalVisitors", label: "Total Visitors", widget: "number" }
+                  - { name: "uniqueVisitors", label: "Unique Visitors", widget: "number" }
+                  - { name: "dailyVisitors", label: "Daily Visitors", widget: "number" }
+                  - { name: "weeklyVisitors", label: "Weekly Visitors", widget: "number" }
+                  - { name: "monthlyVisitors", label: "Monthly Visitors", widget: "number" }
+                  - { name: "projectViews", label: "Project Views", widget: "number" }
+                  - { name: "cvDownloads", label: "CV Downloads", widget: "number" }
+                  - { name: "contactFormSubmissions", label: "Contact Form Submissions", widget: "number" }
+              - name: "graphs"
+                label: "Graphs"
+                widget: "object"
+                fields:
+                  - { name: "visitorTrends", label: "Visitor Trends", widget: "list", field: { name: "item", label: "Item", widget: "string" }, required: false }
+                  - { name: "popularPages", label: "Popular Pages", widget: "list", field: { name: "item", label: "Item", widget: "string" }, required: false }
+                  - { name: "trafficSources", label: "Traffic Sources", widget: "list", field: { name: "item", label: "Item", widget: "string" }, required: false }
+              - name: "sources"
+                label: "Sources"
+                widget: "object"
+                fields:
+                  - { name: "pageViews", label: "Page Views", widget: "list", field: { name: "item", label: "Item", widget: "string" }, required: false }
+                  - { name: "referrers", label: "Referrers", widget: "list", field: { name: "item", label: "Item", widget: "string" }, required: false }
+                  - { name: "events", label: "Events", widget: "list", field: { name: "item", label: "Item", widget: "string" }, required: false }
+              - name: "notifications"
+                label: "Notifications"
+                widget: "object"
+                fields:
+                  - { name: "onNewVisitor", label: "On New Visitor", widget: "boolean" }
+                  - { name: "onProjectView", label: "On Project View", widget: "boolean" }
+                  - { name: "onCvDownload", label: "On CV Download", widget: "boolean" }
+                  - { name: "onContactSubmission", label: "On Contact Submission", widget: "boolean" }
+                  - { name: "onNewReview", label: "On New Review", widget: "boolean" }
+          - name: "notifications"
+            label: "Notifications"
+            widget: "object"
+            fields:
+              - name: "channels"
+                label: "Channels"
+                widget: "object"
+                fields:
+                  - { name: "email", label: "Email", widget: "boolean" }
+                  - { name: "telegram", label: "Telegram", widget: "boolean" }
+                  - { name: "discord", label: "Discord", widget: "boolean" }
+                  - { name: "whatsappApi", label: "WhatsApp API", widget: "boolean" }
+              - name: "events"
+                label: "Events"
+                widget: "object"
+                fields:
+                  - { name: "newContactMessage", label: "New Contact Message", widget: "boolean" }
+                  - { name: "newVisitorReachedSite", label: "New Visitor Reached Site", widget: "boolean" }
+                  - { name: "cvDownloaded", label: "CV Downloaded", widget: "boolean" }
+                  - { name: "newReviewSubmitted", label: "New Review Submitted", widget: "boolean" }
+          - name: "footer"
+            label: "Footer"
+            widget: "object"
+            fields:
+              - { name: "copyrightText", label: "Copyright Text", widget: "string" }
+              - name: "socialLinks"
+                label: "Social Links"
+                widget: "list"
+                summary: "{{fields.label}}"
+                fields:
+                  - { name: "id", label: "ID", widget: "string" }
+                  - { name: "label", label: "Label", widget: "string" }
+                  - { name: "href", label: "Href", widget: "string" }
+                  - { name: "visible", label: "Visible", widget: "boolean" }
+                  - { name: "order", label: "Order", widget: "number" }
+              - name: "quickLinks"
+                label: "Quick Links"
+                widget: "list"
+                summary: "{{fields.label}}"
+                fields:
+                  - { name: "id", label: "ID", widget: "string" }
+                  - { name: "label", label: "Label", widget: "string" }
+                  - { name: "href", label: "Href", widget: "string" }
+                  - { name: "visible", label: "Visible", widget: "boolean" }
+                  - { name: "order", label: "Order", widget: "number" }
+              - name: "contactInformation"
+                label: "Contact Information"
+                widget: "object"
+                fields:
+                  - { name: "email", label: "Email", widget: "string" }
+                  - { name: "location", label: "Location", widget: "string" }
+                  - { name: "availability", label: "Availability", widget: "string" }
+          - name: "search"
+            label: "Search"
+            widget: "object"
+            fields:
+              - { name: "enabledCollections", label: "Enabled Collections", widget: "list", field: { name: "item", label: "Item", widget: "string" } }
+              - { name: "indexFields", label: "Index Fields", widget: "list", field: { name: "item", label: "Item", widget: "string" } }
+              - { name: "resultLabels", label: "Result Labels", widget: "object", fields: [{ name: "projects", label: "Projects", widget: "string" }, { name: "skills", label: "Skills", widget: "string" }, { name: "experience", label: "Experience", widget: "string" }, { name: "education", label: "Education", widget: "string" }, { name: "blog", label: "Blog", widget: "string" }, { name: "certifications", label: "Certifications", widget: "string" }] }
+          - name: "performance"
+            label: "Performance"
+            widget: "object"
+            fields:
+              - { name: "lazyLoading", label: "Lazy Loading", widget: "boolean" }
+              - { name: "imageCompression", label: "Image Compression", widget: "boolean" }
+              - { name: "cdnSupport", label: "CDN Support", widget: "boolean" }
+              - { name: "minifiedAssets", label: "Minified Assets", widget: "boolean" }
+              - { name: "targetLighthouse", label: "Target Lighthouse", widget: "number" }
+              - { name: "targetLoadTimeSeconds", label: "Target Load Time Seconds", widget: "number" }
+          - name: "security"
+            label: "Security"
+            widget: "object"
+            fields:
+              - { name: "spamProtection", label: "Spam Protection", widget: "boolean" }
+              - { name: "formValidation", label: "Form Validation", widget: "boolean" }
+              - { name: "rateLimiting", label: "Rate Limiting", widget: "boolean" }
+              - { name: "secureConfiguration", label: "Secure Configuration", widget: "boolean" }
+          - name: "adminDashboard"
+            label: "Admin Dashboard"
+            widget: "object"
+            fields:
+              - name: "modules"
+                label: "Modules"
+                widget: "object"
+                fields:
+                  - { name: "addContent", label: "Add Content", widget: "boolean" }
+                  - { name: "editContent", label: "Edit Content", widget: "boolean" }
+                  - { name: "deleteContent", label: "Delete Content", widget: "boolean" }
+                  - { name: "reorderContent", label: "Reorder Content", widget: "boolean" }
+                  - { name: "uploadMedia", label: "Upload Media", widget: "boolean" }
+                  - { name: "manageReviews", label: "Manage Reviews", widget: "boolean" }
+                  - { name: "manageAnalytics", label: "Manage Analytics", widget: "boolean" }
+                  - { name: "changeTheme", label: "Change Theme", widget: "boolean" }
+                  - { name: "changeSeoSettings", label: "Change SEO Settings", widget: "boolean" }
+                  - { name: "manageNavigation", label: "Manage Navigation", widget: "boolean" }
+              - name: "permissions"
+                label: "Permissions"
+                widget: "object"
+                fields:
+                  - { name: "contentEditor", label: "Content Editor", widget: "boolean" }
+                  - { name: "publisher", label: "Publisher", widget: "boolean" }
+                  - { name: "admin", label: "Admin", widget: "boolean" }
+              - name: "uiState"
+                label: "UI State"
+                widget: "object"
+                fields:
+                  - { name: "defaultView", label: "Default View", widget: "string" }
+                  - { name: "sidebarCollapsed", label: "Sidebar Collapsed", widget: "boolean" }
+                  - { name: "lastOpenedModule", label: "Last Opened Module", widget: "string" }

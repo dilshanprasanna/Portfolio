@@ -1,0 +1,22 @@
+---
+const basePath = Astro.base ?? '/';
+const adminBase = `${basePath.replace(/\/$/, '')}/admin/`;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Admin Dashboard</title>
+    <base href={adminBase} />
+    <script src="https://unpkg.com/decap-cms@^3.8.0/dist/decap-cms.js"></script>
+  </head>
+  <body>
+    <script is:inline>
+      window.CMS_MANUAL_INIT = true;
+      window.addEventListener('DOMContentLoaded', () => {
+        window.CMS.init();
+      });
+    </script>
+  </body>
+</html>

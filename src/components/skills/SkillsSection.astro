@@ -1,0 +1,6 @@
+---
+import SkillsInteractive from './SkillsInteractive';
+
+const { skills } = Astro.props;
+---
+<SkillsInteractive client:idle categories={skills.categories} />

@@ -1,0 +1,55 @@
+---
+const { experience } = Astro.props;
+
+const visibleItems = [...experience.items]
+  .filter((item) => item.visible)
+  .sort((a, b) => {
+    const left = a.startDate ? new Date(`${a.startDate}-01`).getTime() : 0;
+    const right = b.startDate ? new Date(`${b.startDate}-01`).getTime() : 0;
+    return left - right;
+  });
+---
+<section id="experience" class="content-section timeline-section">
+  <div class="section-heading">
+    <p class="eyebrow">Experience</p>
+    <h2>Work History</h2>
+    <p>Chronological timeline with featured entries, responsibilities, and stack tags.</p>
+  </div>
+
+  <div class="timeline-list">
+    {visibleItems.map((item) => (
+      <article class={`timeline-card ${item.featured ? 'is-featured' : ''}`}>
+        <div class="timeline-marker" aria-hidden="true" />
+        <div class="timeline-main">
+          <div class="timeline-header">
+            <div class="timeline-title-block">
+              <p class="timeline-meta">{item.startDate} - {item.currentJobToggle ? 'Present' : item.endDate}</p>
+              <h3>{item.position}</h3>
+              <p class="timeline-company">{item.companyName} · {item.employmentType}</p>
+            </div>
+            {item.featured ? <span class="featured-pill">Featured</span> : null}
+          </div>
+
+          <div class="timeline-branding">
+            <img src={item.companyLogo} alt={`${item.companyName} logo`} loading="lazy" decoding="async" />
+            <a href={item.companyWebsite} target="_blank" rel="noreferrer">
+              Visit company
+            </a>
+          </div>
+
+          <p class="timeline-description">{item.description}</p>
+
+          <ul class="timeline-bullets">
+            {item.responsibilities.map((responsibility) => <li>{responsibility}</li>)}
+          </ul>
+
+          <div class="timeline-tags">
+            {item.technologiesUsed.map((technology) => (
+              <span>{technology}</span>
+            ))}
+          </div>
+        </div>
+      </article>
+    ))}
+  </div>
+</section>

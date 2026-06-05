@@ -1,0 +1,6 @@
+---
+import ProjectsInteractive from './ProjectsInteractive';
+
+const { projects } = Astro.props;
+---
+<ProjectsInteractive client:idle items={projects.items} />

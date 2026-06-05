@@ -1,0 +1,77 @@
+---
+import Navigation from '../components/navigation/Navigation';
+import AnalyticsTracker from '../components/analytics/AnalyticsTracker';
+import data from '../../data.json';
+import '../styles/global.css';
+
+const {
+  title = 'Portfolio',
+  description = 'Premium customizable portfolio website'
+} = Astro.props;
+
+const siteData = Astro.props.siteData ?? data;
+const { theme } = siteData.siteSettings;
+const { seo, branding } = siteData.siteSettings;
+const navigationItems = data.navigation.items;
+const pageTitle = title === 'Portfolio' ? seo.websiteTitle : `${title} | ${seo.websiteTitle}`;
+const metaDescription = description === 'Premium customizable portfolio website' ? seo.metaDescription : description;
+const basePath = Astro.base ?? '/';
+const canonicalUrl = Astro.site ? new URL(Astro.url.pathname, Astro.site).toString() : Astro.url.pathname;
+const openGraphImage = Astro.site ? new URL(seo.openGraphImage, Astro.site).toString() : `${basePath}${seo.openGraphImage.replace(/^\//, '')}`;
+const twitterCardImage = Astro.site ? new URL(seo.twitterCardImage, Astro.site).toString() : `${basePath}${seo.twitterCardImage.replace(/^\//, '')}`;
+const manifestUrl = `${basePath}manifest.webmanifest`;
+const faviconUrl = `${basePath}${branding.favicon.replace(/^\//, '')}`;
+const appleTouchIconUrl = `${basePath}brand/icon.svg`;
+const swUrl = `${basePath}sw.js`;
+
+const themeStyle = `
+  :root {
+    --theme-bg: ${theme.darkModeColors.background};
+    --theme-surface: ${theme.darkModeColors.surface};
+    --theme-text: ${theme.darkModeColors.text};
+    --theme-muted: ${theme.darkModeColors.muted};
+    --theme-primary: ${theme.primaryColor};
+    --theme-secondary: ${theme.secondaryColor};
+    --theme-accent: ${theme.accentColor};
+    --theme-font: ${theme.fontFamily};
+    --theme-radius: ${theme.borderRadius};
+  }
+`;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={metaDescription} />
+    <meta name="keywords" content={seo.keywords.join(', ')} />
+    <meta name="theme-color" content={theme.primaryColor} />
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="manifest" href={manifestUrl} />
+    <link rel="icon" href={faviconUrl} type="image/svg+xml" />
+    <link rel="apple-touch-icon" href={appleTouchIconUrl} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={seo.metaDescription} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={openGraphImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={seo.metaDescription} />
+    <meta name="twitter:image" content={twitterCardImage} />
+    <title>{pageTitle}</title>
+    <style set:html={themeStyle} />
+    <script is:inline>
+      {`if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('${swUrl}').catch(() => {});
+        });
+      }`}
+    </script>
+  </head>
+  <body>
+    <Navigation client:load items={navigationItems} theme={theme} />
+    <AnalyticsTracker client:load sectionIds={navigationItems.map((item) => item.sectionKey)} />
+    <slot />
+  </body>
+</html>

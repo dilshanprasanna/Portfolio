@@ -1,0 +1,24 @@
+{
+  "name": "Your Name | Portfolio",
+  "short_name": "Portfolio",
+  "description": "Premium portfolio website with PWA support.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#070b14",
+  "theme_color": "#78a6ff",
+  "icons": [
+    {
+      "src": "./brand/icon.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "./brand/icon.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

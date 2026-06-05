@@ -1,0 +1,14 @@
+---
+import HeroInteractive from './HeroInteractive';
+
+const { hero } = Astro.props;
+---
+<HeroInteractive client:load
+  headline={hero.headline}
+  subHeadline={hero.subHeadline}
+  introductionText={hero.introductionText}
+  typingAnimationTextList={hero.typingAnimationTextList}
+  profileImage={hero.profileImage}
+  buttons={hero.buttons}
+  features={hero.features}
+/>

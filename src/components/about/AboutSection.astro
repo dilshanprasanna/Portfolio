@@ -1,0 +1,56 @@
+---
+const { about } = Astro.props;
+---
+<section id="about" class="content-section about-section">
+  <div class="section-heading">
+    <p class="eyebrow">About</p>
+    <h2>{about.aboutTitle}</h2>
+  </div>
+
+  <div class="about-grid">
+    <article class="about-card about-summary">
+      <h3>Short Summary</h3>
+      <p>{about.shortSummary}</p>
+      <p>{about.fullDescription}</p>
+    </article>
+
+    <article class="about-card about-story">
+      <h3>Career Goals</h3>
+      <p>{about.careerGoals}</p>
+      <h3>Full Story</h3>
+      <p>{about.personalStory}</p>
+    </article>
+
+    <article class="about-card about-list">
+      <h3>Hobbies</h3>
+      <ul>
+        {about.hobbies.map((hobby) => <li key={hobby}>{hobby}</li>)}
+      </ul>
+    </article>
+
+    <article class="about-card about-list">
+      <h3>Interests</h3>
+      <ul>
+        {about.interests.map((interest) => <li key={interest}>{interest}</li>)}
+      </ul>
+    </article>
+  </div>
+
+  <div class="about-media-grid">
+    {about.media.map((mediaItem) => (
+      mediaItem.type === 'image' ? (
+        <img
+          src={mediaItem.src}
+          alt={mediaItem.alt}
+          loading="lazy"
+          decoding="async"
+          class="about-media"
+        />
+      ) : (
+        <video class="about-media" controls preload="none" playsinline>
+          <source src={mediaItem.src} type="video/mp4" />
+        </video>
+      )
+    ))}
+  </div>
+</section>

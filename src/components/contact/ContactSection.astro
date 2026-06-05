@@ -1,0 +1,37 @@
+---
+import ContactForm from './ContactForm';
+
+const { contact } = Astro.props;
+const endpoint = import.meta.env.PUBLIC_FORMSPREE_ENDPOINT;
+---
+<section id="contact" class="content-section contact-section">
+  <div class="section-heading">
+    <p class="eyebrow">Contact</p>
+    <h2>Let&apos;s build something</h2>
+    <p>Validated static form submission with a Formspree endpoint and dynamic contact methods from JSON.</p>
+  </div>
+
+  <div class="contact-layout">
+    <div class="contact-panel contact-details">
+      <h3>Contact Methods</h3>
+      <ul>
+        <li><a href={`mailto:${contact.methods.email}`}>{contact.methods.email}</a></li>
+        <li><a href={`tel:${contact.methods.phone}`}>{contact.methods.phone}</a></li>
+        <li><a href={contact.methods.whatsapp} target="_blank" rel="noreferrer">WhatsApp</a></li>
+        <li><a href={contact.methods.linkedin} target="_blank" rel="noreferrer">LinkedIn</a></li>
+        <li><a href={contact.methods.github} target="_blank" rel="noreferrer">GitHub</a></li>
+        <li><a href={contact.methods.xTwitter} target="_blank" rel="noreferrer">X / Twitter</a></li>
+      </ul>
+    </div>
+
+    <div class="contact-panel">
+      <ContactForm
+        client:idle
+        endpoint={endpoint}
+        successMessage={contact.form.successMessage}
+        errorMessage={contact.form.errorMessage}
+        minMessageLength={contact.form.validation.minMessageLength}
+      />
+    </div>
+  </div>
+</section>
