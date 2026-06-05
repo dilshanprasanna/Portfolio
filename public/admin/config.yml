@@ -4,103 +4,84 @@ backend:
   name: github
   repo: dilshanprasanna/Portfolio
   branch: main
+  squash_merges: true
 
 local_backend: true
 
-media_folder: "public/images"
-public_folder: "/images"
-
 site_url: https://dilshanprasanna.github.io/Portfolio/
 logo_url: /brand/logo.svg
+media_folder: "public/images"
+public_folder: "/images"
 publish_mode: editorial_workflow
 locale: en
 show_preview_links: true
 
+media_library:
+  name: uploadcare
+  config:
+    multiple: true
+
 collections:
   - name: "portfolio_data"
     label: "Portfolio Data"
-    backend:
-      name: github
-      repo: dilshanprasanna/Portfolio
-      branch: main
-      squash_merges: true
-
-    local_backend: true
-
-    site_url: https://dilshanprasanna.github.io/Portfolio/
-    logo_url: /brand/logo.svg
-    media_folder: "public/images"
-    public_folder: "/images"
-    publish_mode: editorial_workflow
-    locale: en
-    show_preview_links: true
-
-    media_library:
-      name: uploadcare
-      config:
-        multiple: true
-
-    collections:
-      - name: "portfolio_data"
-        label: "Portfolio Data"
-        files:
-          - name: "data"
-            label: "Site Data (data.json)"
-            file: "data.json"
-            format: "json"
-            editor:
-              preview: true
+    files:
+      - name: "data"
+        label: "Site Data (data.json)"
+        file: "data.json"
+        format: "json"
+        editor:
+          preview: true
+        fields:
+          - { name: "siteSettings", label: "Site Settings", widget: "object" }
+          - { name: "navigation", label: "Navigation", widget: "object" }
+          - { name: "hero", label: "Hero", widget: "object" }
+          - { name: "about", label: "About", widget: "object" }
+          - { name: "skills", label: "Skills", widget: "object" }
+          - { name: "experience", label: "Experience", widget: "object" }
+          - { name: "education", label: "Education", widget: "object" }
+          - { name: "projects", label: "Projects", widget: "object" }
+          - { name: "testimonials", label: "Testimonials", widget: "object" }
+          - { name: "contact", label: "Contact", widget: "object" }
+          - { name: "footer", label: "Footer", widget: "object" }
+          - { name: "currentStatus", label: "Current Status", widget: "string" }
+          - { name: "availabilityStatus", label: "Availability Status", widget: "string" }
+          - { name: "freelanceAvailability", label: "Freelance Availability", widget: "boolean" }
+          - name: "seo"
+            label: "SEO Settings"
+            widget: "object"
             fields:
-              - { name: "siteSettings", label: "Site Settings", widget: "object" }
-              - { name: "navigation", label: "Navigation", widget: "object" }
-              - { name: "hero", label: "Hero", widget: "object" }
-              - { name: "about", label: "About", widget: "object" }
-              - { name: "skills", label: "Skills", widget: "object" }
-              - { name: "experience", label: "Experience", widget: "object" }
-              - { name: "education", label: "Education", widget: "object" }
-              - { name: "projects", label: "Projects", widget: "object" }
-              - { name: "testimonials", label: "Testimonials", widget: "object" }
-              - { name: "contact", label: "Contact", widget: "object" }
-              - { name: "footer", label: "Footer", widget: "object" }
-                  - { name: "currentStatus", label: "Current Status", widget: "string" }
-                  - { name: "availabilityStatus", label: "Availability Status", widget: "string" }
-                  - { name: "freelanceAvailability", label: "Freelance Availability", widget: "boolean" }
-              - name: "seo"
-                label: "SEO Settings"
+              - { name: "websiteTitle", label: "Website Title", widget: "string" }
+              - { name: "metaDescription", label: "Meta Description", widget: "text" }
+              - { name: "keywords", label: "Keywords", widget: "list", field: { name: "keyword", label: "Keyword", widget: "string" } }
+              - { name: "openGraphImage", label: "Open Graph Image", widget: "image" }
+              - { name: "twitterCardImage", label: "Twitter Card Image", widget: "image" }
+              - { name: "googleAnalyticsId", label: "Google Analytics ID", widget: "string", required: false }
+          - name: "theme"
+            label: "Theme Settings"
+            widget: "object"
+            fields:
+              - { name: "primaryColor", label: "Primary Color", widget: "color" }
+              - { name: "secondaryColor", label: "Secondary Color", widget: "color" }
+              - { name: "accentColor", label: "Accent Color", widget: "color" }
+              - { name: "fontFamily", label: "Font Family", widget: "string" }
+              - { name: "borderRadius", label: "Border Radius", widget: "string" }
+              - { name: "animationSpeed", label: "Animation Speed", widget: "select", options: ["slow", "normal", "fast"] }
+              - name: "darkModeColors"
+                label: "Dark Mode Colors"
                 widget: "object"
                 fields:
-                  - { name: "websiteTitle", label: "Website Title", widget: "string" }
-                  - { name: "metaDescription", label: "Meta Description", widget: "text" }
-                  - { name: "keywords", label: "Keywords", widget: "list", field: { name: "keyword", label: "Keyword", widget: "string" } }
-                  - { name: "openGraphImage", label: "Open Graph Image", widget: "image" }
-                  - { name: "twitterCardImage", label: "Twitter Card Image", widget: "image" }
-                  - { name: "googleAnalyticsId", label: "Google Analytics ID", widget: "string", required: false }
-              - name: "theme"
-                label: "Theme Settings"
+                  - { name: "background", label: "Background", widget: "color" }
+                  - { name: "surface", label: "Surface", widget: "color" }
+                  - { name: "text", label: "Text", widget: "color" }
+                  - { name: "muted", label: "Muted", widget: "color" }
+              - name: "lightModeColors"
+                label: "Light Mode Colors"
                 widget: "object"
                 fields:
-                  - { name: "primaryColor", label: "Primary Color", widget: "color" }
-                  - { name: "secondaryColor", label: "Secondary Color", widget: "color" }
-                  - { name: "accentColor", label: "Accent Color", widget: "color" }
-                  - { name: "fontFamily", label: "Font Family", widget: "string" }
-                  - { name: "borderRadius", label: "Border Radius", widget: "string" }
-                  - { name: "animationSpeed", label: "Animation Speed", widget: "select", options: ["slow", "normal", "fast"] }
-                  - name: "darkModeColors"
-                    label: "Dark Mode Colors"
-                    widget: "object"
-                    fields:
-                      - { name: "background", label: "Background", widget: "color" }
-                      - { name: "surface", label: "Surface", widget: "color" }
-                      - { name: "text", label: "Text", widget: "color" }
-                      - { name: "muted", label: "Muted", widget: "color" }
-                  - name: "lightModeColors"
-                    label: "Light Mode Colors"
-                    widget: "object"
-                    fields:
-                      - { name: "background", label: "Background", widget: "color" }
-                      - { name: "surface", label: "Surface", widget: "color" }
-                      - { name: "text", label: "Text", widget: "color" }
-                      - { name: "muted", label: "Muted", widget: "color" }
+                  - { name: "background", label: "Background", widget: "color" }
+                  - { name: "surface", label: "Surface", widget: "color" }
+                  - { name: "text", label: "Text", widget: "color" }
+                  - { name: "muted", label: "Muted", widget: "color" }
               - name: "branding"
                 label: "Branding"
                 widget: "object"
