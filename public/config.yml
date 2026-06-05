@@ -1,0 +1,49 @@
+backend:
+  name: github
+  repo: dilshanprasanna/Portfolio
+  branch: main
+  squash_merges: true
+
+local_backend: true
+
+site_url: https://dilshanprasanna.github.io/Portfolio/
+logo_url: /brand/logo.svg
+media_folder: "public/uploads"
+public_folder: "/uploads"
+publish_mode: editorial_workflow
+locale: en
+show_preview_links: true
+
+media_library:
+  name: uploadcare
+  config:
+    multiple: true
+
+collections:
+  - name: "site"
+    label: "Site Settings"
+    files:
+      - name: "data"
+        label: "Portfolio Content"
+        file: "data.json"
+        format: "json"
+        editor:
+          preview: true
+        fields:
+          - name: "meta"
+            label: "Meta"
+            widget: "object"
+            fields:
+              - { name: "schemaVersion", label: "Schema Version", widget: "string" }
+              - { name: "generatedAt", label: "Generated At", widget: "datetime" }
+              - { name: "lastUpdatedAt", label: "Last Updated At", widget: "datetime" }
+              - { name: "publishStatus", label: "Publish Status", widget: "select", options: ["draft", "published"] }
+              - { name: "locale", label: "Locale", widget: "string" }
+              - { name: "timezone", label: "Timezone", widget: "string" }
+              - { name: "supportsCrud", label: "Supports CRUD", widget: "boolean" }
+              - { name: "supportsReorder", label: "Supports Reorder", widget: "boolean" }
+              - { name: "supportsVisibilityToggle", label: "Supports Visibility Toggle", widget: "boolean" }
+              - { name: "supportsDraftPublish", label: "Supports Draft/Publish", widget: "boolean" }
+              - { name: "supportsSoftDelete", label: "Supports Soft Delete", widget: "boolean" }
+              - { name: "supportsMediaUploads", label: "Supports Media Uploads", widget: "boolean" }
+              - { name: "supportsUnlimitedArrays", label: "Supports Unlimited Arrays", widget: "boolean" }

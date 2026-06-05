@@ -1,7 +1,7 @@
 ---
 const basePath = Astro.base ?? '/';
 const adminBase = `${basePath.replace(/\/$/, '')}/admin/`;
-const configPath = `${adminBase}config.yml`;
+const configPath = `${basePath.replace(/\/$/, '')}/config.yml`;
 ---
 <!doctype html>
 <html lang="en">
@@ -13,10 +13,11 @@ const configPath = `${adminBase}config.yml`;
     <script src="https://unpkg.com/decap-cms@^3.8.0/dist/decap-cms.js"></script>
   </head>
   <body>
-    <script is:inline>
+    <script>
       window.CMS_MANUAL_INIT = true;
       window.addEventListener('DOMContentLoaded', () => {
-        window.CMS.init({ config: ${JSON.stringify(configPath)} });
+        // Use explicit deployed config path for GitHub Pages project sites
+        window.CMS.init({ config: '/Portfolio/config.yml' });
       });
     </script>
   </body>
