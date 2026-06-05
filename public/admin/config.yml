@@ -1,52 +1,51 @@
+# Decap (Netlify) CMS configuration for Portfolio
+
 backend:
   name: github
   repo: dilshanprasanna/Portfolio
   branch: main
-  squash_merges: true
 
 local_backend: true
 
+media_folder: "public/images"
+public_folder: "/images"
+
 site_url: https://dilshanprasanna.github.io/Portfolio/
 logo_url: /brand/logo.svg
-media_folder: "public/uploads"
-public_folder: "/uploads"
 publish_mode: editorial_workflow
 locale: en
 show_preview_links: true
 
-media_library:
-  name: uploadcare
-  config:
-    multiple: true
-
 collections:
-  - name: "site"
-    label: "Site Settings"
+  - name: "portfolio_data"
+    label: "Portfolio Data"
     files:
       - name: "data"
-        label: "Portfolio Content"
+        label: "Site Data (data.json)"
         file: "data.json"
         format: "json"
         editor:
           preview: true
         fields:
-          - name: "meta"
-            label: "Meta"
-            widget: "object"
-            fields:
-              - { name: "schemaVersion", label: "Schema Version", widget: "string" }
-              - { name: "generatedAt", label: "Generated At", widget: "datetime" }
-              - { name: "lastUpdatedAt", label: "Last Updated At", widget: "datetime" }
-              - { name: "publishStatus", label: "Publish Status", widget: "select", options: ["draft", "published"] }
-              - { name: "locale", label: "Locale", widget: "string" }
-              - { name: "timezone", label: "Timezone", widget: "string" }
-              - { name: "supportsCrud", label: "Supports CRUD", widget: "boolean" }
-              - { name: "supportsReorder", label: "Supports Reorder", widget: "boolean" }
-              - { name: "supportsVisibilityToggle", label: "Supports Visibility Toggle", widget: "boolean" }
-              - { name: "supportsDraftPublish", label: "Supports Draft/Publish", widget: "boolean" }
-              - { name: "supportsSoftDelete", label: "Supports Soft Delete", widget: "boolean" }
-              - { name: "supportsMediaUploads", label: "Supports Media Uploads", widget: "boolean" }
-              - { name: "supportsUnlimitedArrays", label: "Supports Unlimited Arrays", widget: "boolean" }
+          - { name: "meta", label: "Meta", widget: "object" }
+          - { name: "siteSettings", label: "Site Settings", widget: "object" }
+          - { name: "navigation", label: "Navigation", widget: "object" }
+          - { name: "hero", label: "Hero", widget: "object" }
+          - { name: "about", label: "About", widget: "object" }
+          - { name: "skills", label: "Skills", widget: "object" }
+          - { name: "experience", label: "Experience", widget: "object" }
+          - { name: "education", label: "Education", widget: "object" }
+          - { name: "projects", label: "Projects", widget: "object" }
+          - { name: "testimonials", label: "Testimonials", widget: "object" }
+          - { name: "contact", label: "Contact", widget: "object" }
+          - { name: "analytics", label: "Analytics", widget: "object", required: false }
+          - { name: "footer", label: "Footer", widget: "object" }
+
+# Optional media library (uncomment and configure if you want to use uploadcare or similar)
+# media_library:
+#   name: uploadcare
+#   config:
+#     multiple: true
           - name: "siteSettings"
             label: "Global Settings"
             widget: "object"
